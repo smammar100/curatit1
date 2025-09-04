@@ -11,8 +11,6 @@ import {
 } from "commerce-sdk-isomorphic";
 import { TAGS } from "@/lib/constants";
 import {
-  unstable_cacheLife as cacheLife,
-  unstable_cacheTag as cacheTag,
   revalidateTag,
 } from "next/cache";
 import { cookies, headers } from "next/headers";
@@ -57,16 +55,10 @@ const apiConfig = {
 };
 
 export async function getSFCCMode() {
-  "use cache";
-  cacheTag(TAGS.mode);
-  cacheLife("days");
   return USE_MOCK_DATA ? "mock" : "live";
 }
 
 export async function getCollections() {
-  "use cache";
-  cacheTag(TAGS.collections);
-  cacheLife("days");
   try {
     if (USE_MOCK_DATA) {
       return mockCollections.filter(
@@ -81,9 +73,6 @@ export async function getCollections() {
 }
 
 export async function getCollection(id: string) {
-  "use cache";
-  cacheTag(TAGS.collections, id);
-  cacheLife("days");
 
   try {
     if (USE_MOCK_DATA) {
@@ -101,9 +90,6 @@ export async function getCollection(id: string) {
 }
 
 export async function getProduct(handle: string) {
-  "use cache";
-  cacheTag(TAGS.products);
-  cacheLife("days");
 
   try {
     if (USE_MOCK_DATA) {
@@ -131,9 +117,6 @@ export async function getCollectionProducts({
   limit?: number;
   sortKey?: string;
 }) {
-  "use cache";
-  cacheTag(TAGS.products, TAGS.collections);
-  cacheLife("days");
 
   try {
     if (USE_MOCK_DATA) {
@@ -188,9 +171,6 @@ export async function getProducts({
   sortKey?: string;
   reverse?: boolean;
 }) {
-  "use cache";
-  cacheTag(TAGS.products);
-  cacheLife("days");
   return await searchProducts({ query, sortKey });
 }
 
@@ -383,10 +363,6 @@ export async function getProductRecommendations(productId: string) {
   // done through Einstein, which isn't available in this environment.
   // For now, we refetch the product and use the categoryId to get recommendations.
   // This fills the need for now and doesn't require changes to the UI.
-
-  "use cache";
-  cacheTag(TAGS.products);
-  cacheLife("days");
 
   const product = await getProduct(productId);
   const categoryId = product?.categoryId;
