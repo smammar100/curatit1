@@ -30,6 +30,15 @@ export const images: ImageItem[] = [
     photographer: "Silas Baisch",
     unsplashId: "photo-1505142468610-359e7d316be0",
   },
+  {
+    id: "desert-sunset",
+    title: "Desert Sunset",
+    description: "Golden sand dunes at sunset",
+    imageUrl: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800&h=600&fit=crop",
+    category: "nature",
+    photographer: "Casey Horner",
+    unsplashId: "photo-1509316785289-025f5b846b35",
+  },
 
   // Architecture
   {
@@ -58,6 +67,15 @@ export const images: ImageItem[] = [
     category: "architecture",
     photographer: "Anastase Maragos",
     unsplashId: "photo-1520637836862-4d197d17c11a",
+  },
+  {
+    id: "spiral-staircase",
+    title: "Spiral Staircase",
+    description: "Elegant curved staircase design",
+    imageUrl: "https://images.unsplash.com/photo-1521013363569-7336fdb4645b?w=800&h=600&fit=crop",
+    category: "architecture",
+    photographer: "Nathan Van Egmond",
+    unsplashId: "photo-1521013363569-7336fdb4645b",
   },
 
   // Abstract
@@ -88,6 +106,15 @@ export const images: ImageItem[] = [
     photographer: "Altınay Dinç",
     unsplashId: "photo-1558591710-4b4a1ae0f04d",
   },
+  {
+    id: "fluid-art",
+    title: "Fluid Art",
+    description: "Flowing abstract patterns",
+    imageUrl: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&h=600&fit=crop",
+    category: "abstract",
+    photographer: "Irina Iriser",
+    unsplashId: "photo-1541701494587-cb58502866ab",
+  },
 
   // Urban
   {
@@ -117,6 +144,15 @@ export const images: ImageItem[] = [
     photographer: "Mikael Blomkvist",
     unsplashId: "photo-1544966503-7cc5ac882d5f",
   },
+  {
+    id: "street-art",
+    title: "Street Art",
+    description: "Colorful urban street art",
+    imageUrl: "https://images.unsplash.com/photo-1569701762119-0e7f3fdc23c8?w=800&h=600&fit=crop",
+    category: "urban",
+    photographer: "Dan Cristian Pădureț",
+    unsplashId: "photo-1569701762119-0e7f3fdc23c8",
+  },
 
   // Portrait
   {
@@ -145,6 +181,15 @@ export const images: ImageItem[] = [
     category: "portrait",
     photographer: "Ayo Ogunseinde",
     unsplashId: "photo-1463453091185-61582044d556",
+  },
+  {
+    id: "portrait-four",
+    title: "Studio Portrait",
+    description: "Professional studio photography",
+    imageUrl: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=800&h=600&fit=crop",
+    category: "portrait",
+    photographer: "Max Bender",
+    unsplashId: "photo-1508214751196-bcfd4ca60f91",
   },
 ];
 
