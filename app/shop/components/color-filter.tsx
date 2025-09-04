@@ -5,7 +5,7 @@ import { ColorSwatchSkeleton } from "@/components/ui/color-swatch-skeleton";
 import { Product } from "@/lib/sfcc/types";
 import { cn } from "@/lib/utils";
 import { useAvailableColors } from "../hooks/use-available-colors";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface ColorFilterProps {
   products?: Product[];

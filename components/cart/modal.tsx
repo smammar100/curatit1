@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { createCartAndSetCookie, redirectToCheckout } from "./actions";
 import { useCart } from "./cart-context";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "../ui/button";
 import { CartItemCard } from "./cart-item";
 import { formatPrice } from "@/lib/sfcc/utils";

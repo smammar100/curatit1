@@ -10,7 +10,7 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "../ui/tooltip";
 import { useSelectedVariant } from "@/components/products/variant-selector";
 import { useParams, useSearchParams } from "next/navigation";
 import { ReactNode } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Loader } from "../ui/loader";
 
 interface AddToCartProps extends ButtonProps {

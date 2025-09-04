@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { getCart, getSFCCMode } from "@/lib/sfcc";
 import { CartProvider } from "@/components/cart/cart-context";
 import { DebugGrid } from "@/components/debug-grid";
@@ -42,12 +41,10 @@ export default async function RootLayout({
       >
         <SetupToolbar />
         <CartProvider cartPromise={cart} mode={mode}>
-          <NuqsAdapter>
-            <HeaderWithData />
-            {children}
-            <Toaster closeButton position="bottom-right" />
-            {isDevelopment && <DebugGrid />}
-          </NuqsAdapter>
+          <HeaderWithData />
+          {children}
+          <Toaster closeButton position="bottom-right" />
+          {isDevelopment && <DebugGrid />}
         </CartProvider>
       </body>
     </html>
