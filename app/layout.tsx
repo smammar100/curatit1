@@ -2,12 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
-import { getCart, getSFCCMode } from "@/lib/sfcc";
-import { CartProvider } from "@/components/cart/cart-context";
 import { DebugGrid } from "@/components/debug-grid";
 import { isDevelopment } from "@/lib/constants";
 import { HeaderWithData } from "@/components/layout/header/server-wrapper";
-import { SetupToolbar } from "@/components/cart/development/setup-toolbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,32 +17,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ACME Store",
-  description: "ACME Store, your one-stop shop for all your needs.",
-    generator: 'v0.app'
+  title: "ACME Gallery",
+  description: "ACME Gallery - Beautiful photography collection.",
+  generator: 'v0.app'
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const mode = await getSFCCMode();
-  const cart = getCart();
-
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
-        suppressHydrationWarning
+        suppressHydrationWarning={true}
       >
-        <SetupToolbar />
-        <CartProvider cartPromise={cart} mode={mode}>
-          <HeaderWithData />
-          {children}
-          <Toaster closeButton position="bottom-right" />
+        <HeaderWithData />
+        {children}
+        <Toaster closeButton position="bottom-right" />
+        <div suppressHydrationWarning>
           {isDevelopment && <DebugGrid />}
-        </CartProvider>
+        </div>
       </body>
     </html>
   );

@@ -1,15 +1,15 @@
 import Link from "next/link";
-import { Collection } from "@/lib/sfcc/types";
+import { ImageCollection } from "@/lib/types";
 
 interface ShopLinksProps {
-  collections: Collection[];
+  collections: ImageCollection[];
   align?: "left" | "right";
   label?: string;
 }
 
 export function ShopLinks({
   collections,
-  label = "Shop",
+  label = "Browse",
   align = "left",
 }: ShopLinksProps) {
   return (
@@ -17,9 +17,11 @@ export function ShopLinks({
       <h4 className="font-extrabold text-lg md:text-xl">{label}</h4>
 
       <ul className="flex flex-col gap-1.5 leading-5 mt-5">
-        {collections.map((item) => (
-          <li key={item.handle}>
-            <Link href={`/shop/${item.handle}`} prefetch>{item.title}</Link>
+        {collections.map((collection) => (
+          <li key={collection.handle}>
+            <Link href={`/gallery/${collection.handle}`} prefetch className="hover:underline">
+              {collection.title}
+            </Link>
           </li>
         ))}
       </ul>

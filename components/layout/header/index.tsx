@@ -5,9 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { LogoSvg } from "./logo-svg";
-import CartModal from "@/components/cart/modal";
-import { NavItem } from "@/lib/types";
-import { Collection } from "@/lib/sfcc/types";
+import { NavItem, ImageCollection } from "@/lib/types";
 
 export const navItems: NavItem[] = [
   {
@@ -16,23 +14,23 @@ export const navItems: NavItem[] = [
   },
   {
     label: "featured",
-    href: "/shop/top-seller",
+    href: "/gallery/featured",
   },
   {
-    label: "shop all",
-    href: "/shop",
+    label: "gallery",
+    href: "/gallery",
   },
 ];
 
 interface HeaderProps {
-  collections: Collection[];
+  collections: ImageCollection[];
 }
 
 export function Header({ collections }: HeaderProps) {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 left-0 w-full p-sides grid grid-cols-3 md:grid-cols-12 md:gap-sides z-50 items-start">
+    <header className="fixed top-0 left-0 w-full p-6 grid grid-cols-3 md:grid-cols-12 md:gap-6 z-50 items-start">
       <div className="block flex-none md:hidden">
         <MobileMenu collections={collections} />
       </div>
@@ -40,7 +38,7 @@ export function Header({ collections }: HeaderProps) {
         <LogoSvg className="h-6 w-auto max-md:place-self-center md:size-full md:max-w-[400px]" />
       </Link>
       <nav className="flex items-center md:col-span-10 justify-end gap-2">
-        <ul className="items-center gap-5 py-0.5 px-3 bg-background/10 rounded-sm backdrop-blur-md hidden md:flex">
+        <ul className="items-center gap-5 py-0.5 px-3 bg-background/10 rounded-sm backdrop-blur-md flex">
           {navItems.map((item) => (
             <li key={item.href}>
               <Link
@@ -58,7 +56,6 @@ export function Header({ collections }: HeaderProps) {
             </li>
           ))}
         </ul>
-        <CartModal />
       </nav>
     </header>
   );

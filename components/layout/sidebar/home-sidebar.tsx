@@ -1,24 +1,24 @@
 import { ShopLinks } from "../shop-links";
-import { Collection } from "@/lib/sfcc/types";
+import { ImageCollection } from "@/lib/types";
 
 interface HomeSidebarProps {
-  collections: Collection[];
+  collections: ImageCollection[];
 }
 
 export function HomeSidebar({ collections }: HomeSidebarProps) {
   return (
-    <aside className="max-md:hidden col-span-4 h-screen sticky top-0 p-sides pt-top-spacing flex flex-col justify-between">
+    <aside className="max-md:hidden col-span-4 h-screen sticky top-0 p-6 pt-20 md:pt-36 flex flex-col justify-between">
       <div>
         <p className="italic tracking-tighter text-base">
-          Refined. Minimal. Never boring.
+          Curated. Beautiful. Inspiring.
         </p>
         <div className="mt-5 text-base leading-tight">
-          <p>Furniture that speaks softly, but stands out loud.</p>
-          <p>Clean lines, crafted with wit.</p>
-          <p>Elegance with a wink — style first</p>
+          <p>Photography that speaks to the soul.</p>
+          <p>Captured moments, shared stories.</p>
+          <p>Beauty in every frame.</p>
         </div>
       </div>
-      <ShopLinks collections={collections} />
+      <ShopLinks collections={collections} label="Browse" />
     </aside>
   );
 }

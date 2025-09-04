@@ -8,10 +8,10 @@ import Link from "next/link";
 import { navItems } from "./index";
 import { SidebarLinks } from "../sidebar/product-sidebar-links";
 import { ShopLinks } from "../shop-links";
-import { Collection } from "@/lib/sfcc/types";
+import { ImageCollection } from "@/lib/types";
 
 interface MobileMenuProps {
-  collections: Collection[];
+  collections: ImageCollection[];
 }
 
 export default function MobileMenu({ collections }: MobileMenuProps) {
@@ -67,7 +67,7 @@ export default function MobileMenu({ collections }: MobileMenuProps) {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="fixed top-0 bottom-0 left-0 flex w-full md:w-[400px] p-modal-sides z-50"
+              className="fixed top-0 bottom-0 left-0 flex w-full md:w-[400px] p-3 md:p-4 lg:p-6 z-50"
             >
               <div className="flex flex-col bg-muted p-3 md:p-4 rounded w-full">
                 <div className="pl-2 flex items-baseline justify-between mb-10">
@@ -75,7 +75,7 @@ export default function MobileMenu({ collections }: MobileMenuProps) {
                   <Button
                     size="sm"
                     variant="ghost"
-                    aria-label="Close cart"
+                    aria-label="Close menu"
                     onClick={closeMobileMenu}
                   >
                     Close
@@ -101,12 +101,12 @@ export default function MobileMenu({ collections }: MobileMenuProps) {
 
                 <div className="mt-auto mb-6">
                   <p className="italic tracking-tighter text-base">
-                    Refined. Minimal. Never boring.
+                    Curated. Beautiful. Inspiring.
                   </p>
                   <div className="mt-5 text-base leading-tight">
-                    <p>Furniture that speaks softly, but stands out loud.</p>
-                    <p>Clean lines, crafted with wit.</p>
-                    <p>Elegance with a wink — style first</p>
+                    <p>Photography that speaks to the soul.</p>
+                    <p>Captured moments, shared stories.</p>
+                    <p>Beauty in every frame.</p>
                   </div>
                 </div>
                 <SidebarLinks className="gap-6 max-w-max" />
