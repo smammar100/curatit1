@@ -17,7 +17,7 @@ import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export async function generateMetadata(props: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ collection: string; id: string }>;
 }): Promise<Metadata> {
   const params = await props.params;
   const image = getImageByHandle(params.id);
@@ -31,7 +31,7 @@ export async function generateMetadata(props: {
 }
 
 export default async function ImagePage(props: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ collection: string; id: string }>;
 }) {
   const params = await props.params;
   const image = getImageByHandle(params.id);

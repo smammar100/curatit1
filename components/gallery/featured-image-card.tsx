@@ -52,7 +52,7 @@ export function FeaturedImageCard({
 
   return (
     <div className={cn("relative aspect-square", className)}>
-      <Link
+      href={`/gallery/${image.category}/${image.handle}`}
         href={`/gallery/${image.id}`}
         className="block w-full h-full group"
         prefetch

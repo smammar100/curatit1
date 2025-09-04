@@ -8,7 +8,7 @@ export const ImageCard = ({ image }: { image: ImageItem }) => {
   return (
     <div className="relative w-full aspect-[4/3] bg-muted group overflow-hidden rounded-lg">
       <Link
-        href={`/gallery/${image.id}`}
+        href={`/gallery/${image.category}/${image.handle}`}
         className="block size-full focus-visible:outline-none"
         aria-label={`View ${image.title} by ${image.photographer}`}
         prefetch
