@@ -1,13 +1,8 @@
 ---
-import { getCollections, CONTACT_LINKS } from '@/lib/utils';
+import { getCollections } from '@/lib/data';
+import { CONTACT_LINKS } from '@/lib/utils';
 
-const collections = [
-  { handle: 'nature', title: 'Nature' },
-  { handle: 'architecture', title: 'Architecture' }, 
-  { handle: 'abstract', title: 'Abstract' },
-  { handle: 'urban', title: 'Urban' },
-  { handle: 'portrait', title: 'Portrait' }
-];
+const collections = getCollections().filter(c => c.handle !== 'featured');
 ---
 
 <footer class="p-6">
