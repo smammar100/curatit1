@@ -1,0 +1,76 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import FeaturedImageCard from '@/components/FeaturedImageCard.astro';
+import Badge from '@/components/ui/Badge.astro';
+import { getImagesByCollection, getCollections } from '@/lib/data';
+
+const featuredImages = getImagesByCollection("featured");
+const collections = getCollections();
+const [firstImage, ...restImages] = featuredImages;
+---
+
+<Layout title="ACME Gallery - Home">
+  <Header />
+  
+  <div class="contents md:grid md:grid-cols-12 md:gap-6">
+    <!-- Sidebar -->
+    <aside class="max-md:hidden col-span-4 h-screen sticky top-0 p-6 pt-20 md:pt-36 flex flex-col justify-between">
+      <div>
+        <p class="italic tracking-tighter text-base">
+          Curated. Beautiful. Inspiring.
+        </p>
+        <div class="mt-5 text-base leading-tight">
+          <p>Photography that speaks to the soul.</p>
+          <p>Captured moments, shared stories.</p>
+          <p>Beauty in every frame.</p>
+        </div>
+      </div>
+      
+      <div>
+        <h4 class="font-extrabold text-lg md:text-xl">Browse</h4>
+        <ul class="flex flex-col gap-1.5 leading-5 mt-5">
+          {collections.map((collection) => (
+            <li>
+              <a href={`/gallery/${collection.handle}`} class="hover:underline">
+                {collection.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <div class="col-span-8 flex flex-col md:grid grid-cols-2 w-full relative">
+      <div class="fixed top-0 left-0 w-full grid grid-cols-12 gap-6 py-6 pointer-events-none z-10">
+        <div class="col-start-5 col-span-8">
+          <div class="px-6 hidden lg:block">
+            <Badge variant="outline-secondary">featured gallery</Badge>
+          </div>
+        </div>
+      </div>
+      
+      {featuredImages.length > 0 && (
+        <>
+          {firstImage && (
+            <FeaturedImageCard
+              class="col-span-2"
+              image={firstImage}
+              featured={true}
+            />
+          )}
+          {restImages.map((image) => (
+            <FeaturedImageCard
+              class="col-span-1"
+              image={image}
+            />
+          ))}
+        </>
+      )}
+    </div>
+  </div>
+  
+  <Footer />
+</Layout>

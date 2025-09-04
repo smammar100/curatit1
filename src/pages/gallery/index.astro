@@ -1,0 +1,78 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import ImageCard from '@/components/ImageCard.astro';
+import { getImagesByCollection, getCollections } from '@/lib/data';
+
+const images = getImagesByCollection("all");
+const collections = getCollections();
+---
+
+<Layout title="Gallery - ACME Gallery">
+  <Header />
+  
+  <div class="contents md:grid md:grid-cols-12 md:gap-6">
+    <!-- Desktop Sidebar -->
+    <aside class="max-md:hidden col-span-3 h-screen sticky top-0 p-6 pt-20 md:pt-36 flex flex-col gap-4">
+      <div class="bg-muted rounded-lg py-4 px-3">
+        <h3 class="font-semibold mb-4">Categories</h3>
+        <ul class="flex flex-col gap-1">
+          <li>
+            <a
+              class="text-left w-full font-sm cursor-pointer transition-all transform hover:translate-x-1 font-medium translate-x-1"
+              href="/gallery"
+              aria-label="View all images"
+            >
+              All Images
+            </a>
+          </li>
+          {collections.filter(c => c.handle !== 'featured').map((collection) => (
+            <li>
+              <a
+                class="text-left w-full font-sm cursor-pointer transition-all transform hover:translate-x-1"
+                href={`/gallery/${collection.handle}`}
+                aria-label={`Filter by category: ${collection.title}`}
+              >
+                {collection.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="col-span-9 px-6 pt-20 md:pt-36 pb-10">
+      <div class="grid grid-cols-2 items-center w-full mb-6 pr-6">
+        <!-- Breadcrumb -->
+        <nav class="ml-1">
+          <ol class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5">
+            <li class="inline-flex items-center gap-1.5">
+              <a href="/gallery" class="font-semibold text-foreground/50 cursor-pointer hover:text-foreground/70">
+                Gallery
+              </a>
+            </li>
+            <li>/</li>
+            <li class="text-foreground font-semibold">
+              All Images
+            </li>
+          </ol>
+        </nav>
+
+        <!-- Results count -->
+        <span class="text-foreground/50 text-sm place-self-end">
+          {images.length} images
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {images.map((image) => (
+          <ImageCard image={image} />
+        ))}
+      </div>
+    </main>
+  </div>
+  
+  <Footer />
+</Layout>
